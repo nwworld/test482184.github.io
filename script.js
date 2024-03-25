@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         video.muted = false;
     });
 
-    var userIPAddress = window.location.hostname;
+    var userIPAddress = window.location.host;
     ipInfoDiv.textContent = userIPAddress;
 });
 
