@@ -1,0 +1,79 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+.black-screen {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(255, 255, 255); }
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+}
+
+#bg-video {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Siyah overlay */
+    z-index: 2;
+}
+
+.typing-animation h1 {
+    font-size: 20px;
+    font-family: monospace;
+    overflow: hidden;
+    border-right: .12em solid rgb(255, 255, 255);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .12em;
+    animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+::-webkit-scrollbar {
+    background: #000000;
+    overflow: hidden;
+}
+
+.ip-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 56px;
+}
