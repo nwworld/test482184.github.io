@@ -11,17 +11,39 @@ document.addEventListener('DOMContentLoaded', function() {
         video.muted = false;
     });
 
-    fetch('https://ipinfo.io/json')
+    fetch('http://ip-api.com/json/')
     .then(response => response.json())
     .then(data => {
-        var userIPAddress = data.ip;
-        ipInfoDiv.textContent = userIPAddress;
+        var userIPAddress = data.query;
+        // IP adresini göster
+        showIPAddress(userIPAddress);
     })
     .catch(error => {
         console.error('IP adresi alınamadı:', error);
     });
-});
 
+    // Typing effect fonksiyonu
+    function typeEffect(element, speed, text) {
+        var i = 0;
+        var timer = setInterval(function() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(timer);
+            }
+        }, speed);
+    }
+
+    // IP adresini gösteren fonksiyon
+    function showIPAddress(ipAddress) {
+        var ipInfoText = document.createElement('span');
+        ipInfoDiv.appendChild(ipInfoText);
+
+        // "IP Address:" metnini ve IP adresini typing effect ile yaz
+        typeEffect(ipInfoText, 100, 'IP Address: ' + ipAddress);
+    }
+});
 
 let msg1 = " | niggas.world";
 const speed = 250;
