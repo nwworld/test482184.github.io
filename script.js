@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
         video.muted = false;
     });
 
-    var userIPAddress = window.location.host;
-    ipInfoDiv.textContent = userIPAddress;
+    fetch('https://ipinfo.io/json')
+    .then(response => response.json())
+    .then(data => {
+        var userIPAddress = data.ip;
+        ipInfoDiv.textContent = userIPAddress;
+    })
+    .catch(error => {
+        console.error('IP adresi alınamadı:', error);
+    });
 });
 
 
