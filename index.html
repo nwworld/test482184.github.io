@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site</title>
     <link rel="stylesheet" href="style.css?ver=4.3">
+    <style>
+        #location-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 56px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
     <div class="black-screen" id="black-screen">
@@ -18,6 +31,7 @@
     <div class="video-container">
         <div class="overlay">
             <div id="ip-info" class="ip-info"></div>
+            <div id="location-info" class="ip-info"></div>
         </div>
         <video id="bg-video" autoplay muted loop>
             <source src="https://cdn.discordapp.com/attachments/1106593924115603467/1221616109120127026/video.mp4?ex=661339a8&is=6600c4a8&hm=7d5ad7ddd339a673d72dd75994e55b685b55c93bd58d17ee98f8979a003dc07f&" type="video/mp4">
