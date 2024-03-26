@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var clickText = document.getElementById('click-text');
     var video = document.getElementById('bg-video');
     var ipInfoDiv = document.getElementById('ip-info');
+    var locationInfoDiv = document.getElementById('location-info');
 
     blackScreen.addEventListener('click', function() {
         blackScreen.style.display = 'none';
@@ -14,15 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('http://ip-api.com/json/')
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         var userIPAddress = data.query;
-        // IP adresini göster
         showIPAddress(userIPAddress);
+
+        var userLocation = data.city + ', ' + data.regionName + ', ' + data.country;
+        console.log(userLocation);
+        showLocation(userLocation);
     })
     .catch(error => {
         console.error('IP adresi alınamadı:', error);
     });
 
-    // Typing effect fonksiyonu
     function typeEffect(element, speed, text) {
         var i = 0;
         var timer = setInterval(function() {
@@ -35,13 +39,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }, speed);
     }
 
-    // IP adresini gösteren fonksiyon
     function showIPAddress(ipAddress) {
         var ipInfoText = document.createElement('span');
         ipInfoDiv.appendChild(ipInfoText);
-
-        // "IP Address:" metnini ve IP adresini typing effect ile yaz
         typeEffect(ipInfoText, 100, 'IP Address: ' + ipAddress);
+    }
+
+    function showLocation(location) {
+        var locationInfoText = document.createElement('span');
+        locationInfoDiv.appendChild(locationInfoText);
+        typeEffect(locationInfoText, 100, 'Location: ' + location);
     }
 });
 
